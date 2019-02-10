@@ -1,4 +1,6 @@
 cd /chs0325/tomcat/webapps
+rm -rf Servlet-Jsp/
+
 git clone git://github.com/ChoiHanSeong/Servlet-Jsp.git
 cp -r /chs0325/tomcat/webapps/Servlet-Jsp/webapp /chs0325/tomcat/webapps
 mv webapp ROOT
