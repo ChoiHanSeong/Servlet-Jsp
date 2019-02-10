@@ -1,0 +1,8 @@
+cd /chs0325/tomcat/webapps
+git clone git://github.com/ChoiHanSeong/Servlet-Jsp.git
+cp -r /chs0325/tomcat/webapps/Servlet-Jsp/webapp /chs0325/tomcat/webapps
+mv webapp ROOT
+/chs0325/tomcat/bin
+
+시간날때 스크립트로 진행 해야할듯..
+일단은 수작업으로 진행함..
