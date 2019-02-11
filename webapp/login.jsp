@@ -10,7 +10,16 @@
 <%@ include file="./commons/_header.jspf" %>
     
 <h1>로그인</h1>
-<form action="/form_action.jsp" method="post">
+<form action="/login_action.jsp" method="post">
+
+	<%
+		Object errorMessage = request.getAttribute("errorMessage");
+		if(errorMessage != null) {			
+	%>
+		<h1><%=errorMessage %></h1>
+	<%
+		}
+	%>
 	사용자 아이디 : <input name="userId"   type="text">
 	비밀번호 :      <input name="password" type="password"> 
 	<input type="submit" value="로그인">

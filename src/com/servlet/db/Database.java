@@ -11,6 +11,7 @@ public class Database {
 	
 	public static void addUser(User user) {
 		System.out.println("DB User user :: " + user);
+		System.out.println("DB user.getUserId() :: " + user.getUserId());
 		users.put(user.getUserId(), user);
 	}
 

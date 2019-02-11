@@ -38,7 +38,9 @@ public class User {
 
 	public static boolean login(String userId, String password) throws UserNotFoundException, PasswordMismatchException {
 		User dbUser = Database.findByUserId(userId);
-
+		
+		System.out.println("dbUser :: " + dbUser);
+		
 		if(dbUser == null) {
 			throw new UserNotFoundException();
 		}
