@@ -10,7 +10,7 @@
 <%@ include file="./commons/_header.jspf" %>
     
 <h1>로그인</h1>
-<form action="/login_action.jsp" method="post">
+<form action="/users/login" method="post">
 
 	<%
 		Object errorMessage = request.getAttribute("errorMessage");

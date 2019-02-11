@@ -2,6 +2,5 @@
     pageEncoding="UTF-8"%>
 <%
 	session.removeAttribute("userId");
-
 	response.sendRedirect("/");
 %>
