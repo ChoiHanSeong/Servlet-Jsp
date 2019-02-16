@@ -6,7 +6,7 @@ import java.util.Map;
 import com.servlet.user.User;
 
 public class Database {
-	
+	/*
 	private static Map<String, User> users = new HashMap<String, User>();
 	
 	public static void addUser(User user) {
@@ -18,5 +18,5 @@ public class Database {
 	public static User findByUserId(String userId) {
 		return users.get(userId);
 	}
-	
+	*/
 }

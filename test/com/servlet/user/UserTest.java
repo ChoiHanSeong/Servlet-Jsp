@@ -23,16 +23,18 @@ public class UserTest {
 	}
 
 	@Test
-	public void 로그인성공() throws UserNotFoundException, PasswordMismatchException {
+	public void 로그인성공() throws Exception {
 		User user = UserTest.TEST_USER;
-		Database.addUser(user);
+		UserDAO userDao = new UserDAO();
+		userDao.addUser(user);
 		User.login(TEST_USER.getUserId(), TEST_USER.getPassword());
 	}
 	
 	@Test
-	public void 사용자없음() throws UserNotFoundException, PasswordMismatchException {
+	public void 사용자없음() throws Exception {
 		User user = UserTest.TEST_USER;
-		Database.addUser(user);
+		UserDAO userDao = new UserDAO();
+		userDao.addUser(user);
 		User.login(TEST_USER.getUserId(), TEST_USER.getPassword());
 	}
 	
@@ -44,7 +46,8 @@ public class UserTest {
 	@Test(expected=PasswordMismatchException.class)
 	public void loginWhenPasswordMismatch() throws Exception {
 		User user = UserTest.TEST_USER;
-		Database.addUser(user);
+		UserDAO userDao = new UserDAO();
+		userDao.addUser(user);
 		
 		User.login(TEST_USER.getUserId(), "missmatch");
 	}

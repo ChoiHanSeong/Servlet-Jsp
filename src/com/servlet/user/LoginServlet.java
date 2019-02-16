@@ -1,6 +1,7 @@
 package com.servlet.user;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -32,6 +33,12 @@ public class LoginServlet extends HttpServlet {
 			
 			forwardJSP(request, response, "비밀번호가 틀립니다. 다시 로그인하세요.");
 			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 

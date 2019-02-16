@@ -20,7 +20,12 @@ public class SaveUserServlet extends HttpServlet{
 		String email    = request.getParameter("email");
 		
 		User user = new User(userId, password, name, email);
-		Database.addUser(user);
+		UserDAO userDao = new UserDAO();
+		try {
+			userDao.addUser(user);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		response.sendRedirect("/");
 	}
