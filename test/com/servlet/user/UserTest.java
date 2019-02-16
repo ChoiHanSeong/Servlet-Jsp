@@ -2,6 +2,9 @@ package com.servlet.user;
 
 import static org.junit.Assert.*;
 
+import java.sql.SQLException;
+
+import org.junit.Before;
 import org.junit.Test;
 
 import com.servlet.db.Database;
@@ -9,6 +12,13 @@ import com.servlet.db.Database;
 public class UserTest {
 
 	public static User TEST_USER = new User("userId", "password", "name", "email");
+	private UserDAO userDao;
+	
+	@Before
+	public void setup() throws Exception {
+		userDao = new UserDAO();
+		userDao.removeUser(TEST_USER.getUserId());
+	}
 	
 	@Test
 	public void 비밀번호일치() {
