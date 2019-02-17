@@ -13,7 +13,7 @@
 	out.println(userId + " : " + password + " : " + name  + " : " + email);
 	
 	User user = new User(userId, password, name, email);
-	Database.addUser(user);
+	//Database.addUser(user);
 	
 	response.sendRedirect("/");
 	
