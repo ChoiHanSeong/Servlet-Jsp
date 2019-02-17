@@ -13,16 +13,18 @@ import javax.servlet.http.HttpSession;
 
 @WebServlet("/users/login")
 public class LoginServlet extends HttpServlet {
+	public static final String SESSION_USER_ID = "userId";
+
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String userId = request.getParameter("userId");
+		String userId = request.getParameter(SESSION_USER_ID);
 		String password = request.getParameter("password");
 		
 		try {
 			// request에서는 기본적으로 session 값을 가지고 있음..
 			HttpSession session = request.getSession();
 			User.login(userId, password);
-			session.setAttribute("userId", userId);
+			session.setAttribute(SESSION_USER_ID, userId);
 			response.sendRedirect("/");
 			
 		} catch (UserNotFoundException e) {
