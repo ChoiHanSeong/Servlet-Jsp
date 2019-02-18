@@ -9,16 +9,16 @@
 	
 <%@ include file="./commons/_header.jspf" %>
 <c:choose>
-	<c:when test="${empty user.userId}">
-<h1>회원가입</h1>		
+	<c:when test="${isUpdate}">
+<h1>개인정보수정</h1>
 	</c:when>
 	<c:otherwise>
-<h1>개인정보수정</h1>
+<h1>회원가입</h1>		
 	</c:otherwise>
 </c:choose>
 
 	<c:set var="actionUrl" value="/users/create" />
-	<c:if test="${not empty user.userId}">
+	<c:if test="${isUpdate}">
 		<c:set var="actionUrl" value="/users/update" />
 	</c:if>
 
@@ -27,12 +27,12 @@
 	<h1>${errorMessage}</h1>
 </c:if>
 <c:choose>
-	<c:when test="${empty user.userId}">		
-	사용자 아이디 : <input name="userId"   type="text" value="${user.userId}"><br/>
-	</c:when>
-	<c:otherwise>
+	<c:when test="${isUpdate}">		
 	<input type="hidden" name="userId" value="${user.userId}">
 	사용자 아이디 : ${user.userId}<br/>
+	</c:when>
+	<c:otherwise>
+	사용자 아이디 : <input name="userId"   type="text" value="${user.userId}"><br/>
 	</c:otherwise>
 </c:choose>
 	비밀번호 :      <input name="password" type="password" value="${user.password}"><br/> 
