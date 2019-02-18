@@ -23,6 +23,9 @@
 	</c:if>
 
 <form action="${actionUrl}" method="post">
+<c:if test="${not empty errorMessage}">
+	<h1>${errorMessage}</h1>
+</c:if>
 <c:choose>
 	<c:when test="${empty user.userId}">		
 	사용자 아이디 : <input name="userId"   type="text" value="${user.userId}"><br/>
