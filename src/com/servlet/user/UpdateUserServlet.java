@@ -1,6 +1,7 @@
 package com.servlet.user;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 
 import javax.servlet.RequestDispatcher;
@@ -12,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
+
+import org.apache.commons.beanutils.BeanUtilsBean;
 
 import com.servlet.support.MyValidatorFactory;
 
@@ -27,18 +30,26 @@ public class UpdateUserServlet extends HttpServlet{
 			return;
 		}
 		
-		String userId   = request.getParameter("userId");
-		// 로그인 사용자와, 수정 하려는 사용자 id가 같은지..
-		if(!sessionUserId.equals(userId)) {
+//		String userId   = request.getParameter("userId");
+//      로그인 사용자와, 수정 하려는 사용자 id가 같은지..
+//		if(!sessionUserId.equals(userId)) {
+//			response.sendRedirect("/");
+//			return;
+//		}
+		
+		User user = new User();
+		try {
+			BeanUtilsBean.getInstance().populate(user, request.getParameterMap());
+		} catch (IllegalAccessException | InvocationTargetException e1) {
+			throw new ServletException(e1);
+		}
+		
+		if(user.isSameUser(sessionUserId)) {
 			response.sendRedirect("/");
 			return;
 		}
 		
-		String password = request.getParameter("password");
-		String name     = request.getParameter("name");
-		String email    = request.getParameter("email");
 		
-		User user = new User(userId, password, name, email);
 		Validator validator = MyValidatorFactory.createValidator();
 		Set<ConstraintViolation<User>> constraintViolations = validator.validate( user );
 		if(constraintViolations.size() > 0) {
